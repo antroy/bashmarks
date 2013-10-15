@@ -1,0 +1,75 @@
+#!/bin/bash
+
+_set_vars () {
+    MARKS_FILE=~/.bookmarks
+    MARKS_FILE_OLD=${MARKS_FILE}.old
+
+    if [ ! -f $MARKS_FILE ]
+    then
+        touch $MARKS_FILE
+    fi
+}
+
+_unset_vars () {
+    unset MARKS_FILE MARKS_FILE_OLD
+}
+
+_marks () {
+    _set_vars
+    words=`cat $MARKS_FILE | cut -f1`
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    COMPREPLY=( $(compgen -W "${words}" -- ${cur}) )
+    unset MARKS_FILE MARKS_FILE_OLD
+}
+
+complete -F _marks go
+complete -F _marks delmark
+
+_set_vars
+
+if [ ! -f $MARKS_FILE ]
+then
+    touch $MARKS_FILE
+fi
+
+_unset_vars
+
+alias pd="pushd"
+alias po='popd'
+
+go () {
+    name=$1
+    _set_vars
+    new_dir=`grep "^$name" $MARKS_FILE | cut -f 2`
+    if [ "$new_dir" != "" ]
+    then
+        pushd $new_dir > /dev/null
+    else
+        echo "Bookmark '$name' has not been set."
+    fi
+    _unset_vars
+}
+
+delmark () {
+    _set_vars
+
+    name=$1
+    rm -f $MARKS_FILE_OLD
+    mv $MARKS_FILE $MARKS_FILE_OLD
+    sed "/^${name}\t/d" $MARKS_FILE_OLD > $MARKS_FILE
+    _unset_vars
+}
+
+mark () {
+    name=$1
+    delmark $name
+    _set_vars
+    echo -e "${name}\t`pwd`" >> $MARKS_FILE
+    _unset_vars
+}
+
+marks () {
+    _set_vars
+    cat $MARKS_FILE | sort
+    _unset_vars
+}
