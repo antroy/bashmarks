@@ -34,7 +34,6 @@ fi
 
 _unset_vars
 
-alias pd="pushd"
 alias po='popd'
 
 go () {
@@ -44,6 +43,9 @@ go () {
     if [ "$new_dir" != "" ]
     then
         pushd $new_dir > /dev/null
+    elif [ -d $name ]
+    then
+        pushd $name > /dev/null
     else
         echo "Bookmark '$name' has not been set."
     fi
