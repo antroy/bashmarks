@@ -56,9 +56,16 @@ delmark () {
     _set_vars
 
     name=$1
-    rm -f $MARKS_FILE_OLD
-    mv $MARKS_FILE $MARKS_FILE_OLD
-    sed "/^${name}\t/d" $MARKS_FILE_OLD > $MARKS_FILE
+
+    if [ "" == "$name" ]
+    then
+        # Get dir and escape slashes:
+        dir=${PWD//\//\\\/}
+        sed -i.old "/.*\t${dir}/d" $MARKS_FILE
+    else 
+        sed -i.old "/^${name}\t/d" $MARKS_FILE
+    fi
+
     _unset_vars
 }
 
