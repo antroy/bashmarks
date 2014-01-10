@@ -63,7 +63,7 @@ delmark () {
 }
 
 mark () {
-    name=$1
+    name=${1:-${PWD##*/}}
     delmark $name
     _set_vars
     echo -e "${name}\t`pwd`" >> $MARKS_FILE
