@@ -15,10 +15,21 @@ _unset_vars () {
 }
 
 _marks () {
+    local cur prev
+    COMPREPLY=()
+    echo $COMP_CWORD >> /c/0/bash.log
+    cur=${COMP_WORDS[COMP_CWORD]}
+    prev=${COMP_WORDS[COMP_CWORD - 1]}
     _set_vars
-    words=`cat $MARKS_FILE | cut -f1`
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    COMPREPLY=( $(compgen -W "${words}" -- ${cur}) )
+    if [ $COMP_CWORD -eq 1 ]
+    then
+        words=`cat $MARKS_FILE | cut -f1`
+        COMPREPLY=( $(compgen -W "${words}" -- ${cur}) )
+    else
+        new_dir=`grep "^$prev" $MARKS_FILE | cut -f 2`
+        words=`ls $new_dir`
+        COMPREPLY=( $(compgen -W "${words}" -- ${cur}) )
+    fi
     unset MARKS_FILE MARKS_FILE_OLD
 }
 
@@ -42,7 +53,7 @@ go () {
     new_dir=`grep "^$name" $MARKS_FILE | cut -f 2`
     if [ "$new_dir" != "" ]
     then
-        pushd $new_dir > /dev/null
+        pushd $new_dir/$2 > /dev/null
     elif [ -d $name ]
     then
         pushd $name > /dev/null
