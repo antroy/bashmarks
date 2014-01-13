@@ -1,3 +1,8 @@
+Version 1.2.2
+-------------
+
+- Increased version (03e010d Anthony Roy)
+
 Version 1.2.1
 -------------
 
