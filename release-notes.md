@@ -1,3 +1,8 @@
+Version 1.2.1
+-------------
+
+- Removed dodgy log line (a4c5fa0 Anthony Roy)
+
 Version 1.1.1
 -------------
 
