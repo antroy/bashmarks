@@ -1,3 +1,8 @@
+Version 1.1.1
+-------------
+
+- Updated version in bashmarks file (02cbb7a Anthony Roy)
+
 Version 1.1.0
 -------------
 
