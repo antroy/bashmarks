@@ -1,3 +1,11 @@
+Version 1.3.0
+-------------
+
+- Increased Version in bashmarks to 1.3.0 (5fcfad7 Anthony Roy)
+- Fix for version patterns (e287ca4 Anthony Roy)
+- Added pre-release file (956b962 Anthony Roy)
+- Added root function (06c70fa Anthony Roy)
+
 Version 1.2.2
 -------------
 
