@@ -1,5 +1,6 @@
 #!/bin/bash
 # Version 1.2.2
+# Date 
 
 _set_vars () {
     MARKS_FILE=~/.bookmarks
