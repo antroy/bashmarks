@@ -93,3 +93,16 @@ marks () {
     cat $MARKS_FILE | sort
     _unset_vars
 }
+
+root () {
+    _curdir=$PWD
+
+    while [ ! -e "${_curdir}/.git" ] && ! [ "${_curdir}" == "/" ]
+    do
+        _curdir=$(dirname ${_curdir})
+    done
+
+    go $_curdir
+
+    unset _curdir
+}
