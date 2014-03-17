@@ -4,8 +4,8 @@ new_version=$1
 base_dir=$2
 date=`date +'%Y-%m-%d'`
 
-sed -i "s/\(\s*s\.Version\s*\).*/\1${new_version}/" bashmarks
-sed -i "s/\(\s*s\.Date\s*\).*/\1${date}/" bashmarks
+sed -i "s/\(\s*Version\s*\).*/\1${new_version}/" bashmarks
+sed -i "s/\(\s*Date\s*\).*/\1${date}/" bashmarks
 
 git commit -am "Increased Version in bashmarks to $new_version"
 git relnotes
