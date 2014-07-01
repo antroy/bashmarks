@@ -64,6 +64,27 @@ go () {
     _unset_vars
 }
 
+popstack () {
+    pwd > /dev/null
+    
+    while [ $? -eq 0 ]
+    do
+        popd > /dev/null 2>&1
+    done
+}
+
+dropstack () {
+    curdir=`pwd`
+    pwd > /dev/null
+    
+    while [ $? -eq 0 ]
+    do
+        popd > /dev/null 2>&1
+    done
+
+    pushd $curdir > /dev/null 2>&1
+}
+
 delmark () {
     _set_vars
 
