@@ -1,3 +1,9 @@
+Version 1.4.0
+-------------
+
+- Increased Version in bashmarks to 1.4.0 (316fe5f Anthony Roy)
+- Added popstack and dropstack commands (66d906b Anthony Roy)
+
 Version 1.3.0
 -------------
 
