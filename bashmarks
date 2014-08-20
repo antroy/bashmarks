@@ -1,6 +1,6 @@
 #!/bin/bash
-# Version 1.4.0
-# Date 2014-07-01
+# Version 1.5.0
+# Date 2014-08-20
 
 _set_vars () {
     MARKS_FILE=~/.bookmarks
@@ -127,4 +127,20 @@ root () {
     go $_curdir
 
     unset _curdir
+}
+
+clean_marks () {
+    _set_vars
+    cat $MARKS_FILE | while read line
+    do
+        name=`echo "$line" | cut -f 1`
+        dir=`echo "$line" | cut -f 2`
+        
+        if [ ! -d "$dir" ]
+        then
+            echo "Deleting $name ($dir)"
+            delmark $name
+        fi
+    done
+    _unset_vars
 }
