@@ -128,3 +128,19 @@ root () {
 
     unset _curdir
 }
+
+clean_marks () {
+    _set_vars
+    cat $MARKS_FILE | while read line
+    do
+        name=`echo "$line" | cut -f 1`
+        dir=`echo "$line" | cut -f 2`
+        
+        if [ ! -d "$dir" ]
+        then
+            echo "Deleting $name ($dir)"
+            delmark $name
+        fi
+    done
+    _unset_vars
+}
