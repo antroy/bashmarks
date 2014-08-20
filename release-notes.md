@@ -1,3 +1,9 @@
+Version 1.5.0
+-------------
+
+- Increased Version in bashmarks to 1.5.0 (8b8cd69 Anthony Roy)
+- Added clean_marks function (a46b9f3 Anthony Roy)
+
 Version 1.4.0
 -------------
 
