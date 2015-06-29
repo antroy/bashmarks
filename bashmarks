@@ -27,7 +27,7 @@ _marks () {
         words=`cat $MARKS_FILE | cut -f1`
         COMPREPLY=( $(compgen -W "${words}" -- ${cur}) )
     else
-        new_dir=`grep "^$prev" $MARKS_FILE | cut -f 2`
+        new_dir=`cat $MARKS_FILE | sort | grep "^$prev" | cut -f 2`
         words=`ls $new_dir`
         COMPREPLY=( $(compgen -W "${words}" -- ${cur}) )
     fi
@@ -51,7 +51,8 @@ alias po='popd'
 go () {
     name=$1
     _set_vars
-    new_dir=`grep "^$name" $MARKS_FILE | cut -f 2`
+    new_dir=`cat $MARKS_FILE | sort | grep "^$name" | cut -f 2`
+
     if [ "$new_dir" != "" ]
     then
         pushd $new_dir/$2 > /dev/null
