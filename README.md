@@ -13,6 +13,6 @@ This is a bookmarking tool for bash. It provides the following commands with tab
 Installation
 ------------
 
-Save somewhere like you home directory. Source in your .bashrc:
+Save bashmarks.sh somewhere like your home directory. Source in your .bashrc:
 
     source bashmarks
