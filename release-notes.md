@@ -1,3 +1,12 @@
+Version 1.6.0
+-------------
+
+Released: 02 Mar 2016 12:27
+
+- Increased Version in bashmarks to 1.6.0 (a817f89 Anthony Roy)
+- Added better docs (4fcb7cd Anthony Roy)
+- Sorting entries now for more intuitive completion/defaulting (960322a Anthony Roy)
+
 Version 1.5.0
 -------------
 
