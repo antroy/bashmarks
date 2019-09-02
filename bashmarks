@@ -51,7 +51,7 @@ alias po='popd'
 go () {
     name=$1
     _set_vars
-    new_dir=`cat $MARKS_FILE | sort | grep "^$name" | cut -f 2`
+    new_dir=`cat $MARKS_FILE | sort | grep "^$name" | head -n 1 | cut -f 2`
 
     if [ "$new_dir" != "" ]
     then
