@@ -34,7 +34,7 @@ _marks () {
     unset MARKS_FILE MARKS_FILE_OLD
 }
 
-complete -F _marks go
+complete -F _marks gg
 complete -F _marks delmark
 
 _set_vars
@@ -48,7 +48,7 @@ _unset_vars
 
 alias po='popd'
 
-go () {
+gg () {
     name=$1
     _set_vars
     new_dir=`cat $MARKS_FILE | sort | grep "^$name" | head -n 1 | cut -f 2`
@@ -125,7 +125,7 @@ root () {
         _curdir=$(dirname ${_curdir})
     done
 
-    go $_curdir
+    gg $_curdir
 
     unset _curdir
 }
